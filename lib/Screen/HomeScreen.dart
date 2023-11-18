@@ -4,7 +4,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:keebshub/Color/ColorConst.dart';
+import 'package:keebshub/Screen/ProductList.dart';
 import 'package:keebshub/model/Catalogue.dart';
+import 'package:keebshub/model/KeyboardDB.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -58,13 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: catalogueList.length,
+                    itemCount: keebsQuery.length,
                     itemBuilder: (context, index) {
-                      if (index < catalogueList.length) {
+                      if (index < keebsQuery.length) {
                         return Catalogue(
-                            type: catalogueList[index].type,
-                            desc: catalogueList[index].desc,
-                            image: catalogueList[index].image);
+                          keebs: keebsQuery[index],
+                        );
                       }
                     }),
               ],
@@ -148,67 +149,72 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class Catalogue extends StatelessWidget {
-  final String type;
-  final String desc;
-  final String image;
-  const Catalogue(
-      {Key? key, required this.type, required this.desc, required this.image})
-      : super(key: key);
+  final Keyboard keebs;
+  const Catalogue({Key? key, required this.keebs}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.only(right: 10),
-          height: 115,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: primary_100,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 115,
-                width: 115,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ProductList(keebs: keebs)),
+            );
+          },
+          child: Container(
+            padding: EdgeInsets.only(right: 10),
+            height: 115,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: primary_100,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: 115,
+                  width: 115,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(keebs.image),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  borderRadius: BorderRadius.circular(10),
                 ),
-              ),
-              SizedBox(width: 10),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(type,
+                SizedBox(width: 10),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(keebs.type,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w700,
+                              overflow: TextOverflow.ellipsis),
+                          maxLines: 3),
+                      Text(
+                        keebs.desc,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 10,
                             fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w300,
                             overflow: TextOverflow.ellipsis),
-                        maxLines: 3),
-                    Text(
-                      desc,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w300,
-                          overflow: TextOverflow.ellipsis),
-                      maxLines: 3,
-                    ),
-                  ],
+                        maxLines: 3,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         SizedBox(

@@ -1,10 +1,10 @@
-class Prebuilt {
+class Product {
   String name;
   String image;
   String price;
   String description;
 
-  Prebuilt({
+  Product({
     this.name = "",
     this.image = "",
     this.price = "",
