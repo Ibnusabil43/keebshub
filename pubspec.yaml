@@ -73,6 +73,25 @@ flutter:
     - assets/keycapsHome.jpg
     - assets/StabilizerHome.webp
 
+    - assets/PrebuiltProduct/cidoo75.webp
+    - assets/PrebuiltProduct/maxfit81.webp
+    - assets/PrebuiltProduct/mynk.jpeg
+    - assets/PrebuiltProduct/voyager68v2.jpg
+
+    - assets/SwitchProduct/GatPro.jpg
+    - assets/SwitchProduct/PoseidonLinear.jpg
+    - assets/SwitchProduct/StrawberryWine.jpg
+
+    - assets/KeycapProduct/neohallyu.jpg
+    - assets/KeycapProduct/retrocube.jpg
+    - assets/KeycapProduct/shirakawa.jpg
+
+    - assets/StabilizerProduct/pcbmount.jpg
+    - assets/StabilizerProduct/platemount.jpg
+
+    - assets/BareboneProduct/monsgeek.jpg
+    - assets/BareboneProduct/zuoya.jpg
+
 
   # To add assets to your application, add an assets section, like this:
 

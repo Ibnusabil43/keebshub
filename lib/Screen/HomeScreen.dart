@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:keebshub/Color/ColorConst.dart';
 import 'package:keebshub/Screen/ProductList.dart';
-import 'package:keebshub/model/Catalogue.dart';
 import 'package:keebshub/model/KeyboardDB.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: keebsQuery.length,
+                    // ignore: body_might_complete_normally_nullable
                     itemBuilder: (context, index) {
                       if (index < keebsQuery.length) {
                         return Catalogue(

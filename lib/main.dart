@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keebshub/Screen/HomeScreen.dart';
-import 'package:keebshub/Screen/ProductList.dart';
+
 import 'package:keebshub/Screen/WelcomePage.dart';
 
 void main() {
@@ -15,7 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'KeebsHub',
       theme: ThemeData(fontFamily: 'Poppins'),
-      home: HomeScreen(),
+      home: WelcomePage(),
     );
   }
 }
